@@ -1,0 +1,146 @@
+<!--
+CIT2011 Web Programming Group Assignment — School Portal
+
+School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+
+Group members (Name | ID# | Lab day/time | Role):
+
+1. Jade Gordon | [2307670] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+3. Kemesha Waugh | [2508102] | Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+5. Shemar [Williams] | [2300079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>School Portal | Student Administration</title>
+
+   
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/ardenne-storage.js"></script>
+<script src="../js/ardenne-auth.js"></script>
+
+<script>
+    const currentUser = requireRole(["admin"]);
+</script>
+</head>
+
+<body>
+
+    
+    <main class="admin-container">
+
+      
+        <header class="page-header">
+            <h1>Student Administration</h1>
+            <p>Manage student records and registration</p>
+        </header>
+
+        <button type="button" onclick="logoutUser()">Logout</button>
+        <button type="button"
+        onclick="window.location.href='../finance/finance.html'">
+    Financial Portal
+</button>
+
+        
+        <section class="registration-section">
+
+            <h2>Register New Student</h2>
+
+            <form id="studentForm">
+
+                <div class="form-group">
+                    <label for="studentId">Student ID</label>
+                    <input type="text" id="studentId" placeholder="Enter student ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter first name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="grade">Grade/Class</label>
+                    <select id="grade" required>
+                        <option value="">Select Grade</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Parent/Guardian Contact</label>
+                    <input type="tel" id="phone" placeholder="Enter contact number">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="submitButton">Add Student</button>
+                    <button type="reset" id="resetButton">Clear Form</button>
+                </div>
+
+            </form>
+
+        </section>
+
+       
+        <section class="records-section">
+
+            <h2>Student Registry</h2>
+
+            
+            <div class="search-container">
+                <input type="search" id="searchInput" placeholder="Search by ID or name">
+            </div>
+
+          
+            <div class="table-container">
+
+                <table id="studentTable">
+
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                            <th>Contact</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTableBody">
+                        
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    
+    <script src="../js/admin.js"></script>
+
+</body>
+</html>

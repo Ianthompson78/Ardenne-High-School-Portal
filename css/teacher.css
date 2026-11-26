@@ -1,0 +1,146 @@
+/* CIT2011 Web Programming Group Assignment — School Portal
+ * School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+ * File: css/ardenne-auth.css
+ * Group members (Name | ID# | Lab day/time | Role):
+ *   1. Jade Gordon | [2501967] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+ *   2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+ *   3. Kemesha Waugh | [2508102| Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+ *   4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+ *   5. Shemar [SURNAME] | [230079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EAF0F8;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+header {
+    background-color: #174C9B;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 5px solid #F5C928;
+}
+
+header h1 {
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+header p {
+    font-size: 16px;
+}
+
+
+nav {
+    background-color: #123D7D;
+    padding: 16px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #F5C928;
+}
+
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 25px;
+}
+
+main h2 {
+    margin-bottom: 15px;
+    color: #174C9B;
+}
+
+main p {
+    margin-bottom: 15px;
+}
+
+
+.dashboard-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.dashboard-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 220px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+    border-top: 5px solid #F5C928;
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card h3 {
+    color: #174C9B;
+    margin-bottom: 12px;
+}
+
+.dashboard-card p {
+    margin-bottom: 15px;
+}
+
+
+button {
+    background-color: #174C9B;
+    color: white;
+    border: 2px solid #F5C928;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #F5C928;
+    color: #174C9B;
+}
+
+button:disabled {
+    background-color: #999;
+    border-color: #999;
+    color: white;
+    cursor: not-allowed;
+}
+
+
+footer {
+    background-color: #174C9B;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0;
+}

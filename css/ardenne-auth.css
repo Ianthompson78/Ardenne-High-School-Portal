@@ -1,0 +1,145 @@
+/*
+ * CIT2011 Web Programming Group Assignment — School Portal
+ * School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+ * File: css/ardenne-auth.css
+ * Group members (Name | ID# | Lab day/time | Role):
+ *   1. Jade Gordon | [2501967] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+ *   2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+ *   3. Kemesha Waugh | [2508102| Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+ *   4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+ *   5. Shemar [SURNAME] | [230079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+ */
+/* Styles only the login page. Dashboard and public-site styling belongs to
+   the group members responsible for those interfaces. */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #1c2233;
+    background: #f3f5fa;
+}
+
+.login-header {
+    padding: 1rem;
+    color: #ffffff;
+    background: #1a3f9c;
+    border-bottom: 4px solid #f2b705;
+    text-align: center;
+}
+
+.login-header p {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1.5rem 1rem;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 26rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #8a93a8;
+    border-top: 6px solid #1a3f9c;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    margin: 0 0 0.75rem;
+    font-size: 1.75rem;
+}
+
+.intro {
+    margin: 0 0 1rem;
+    color: #4a5368;
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.form-field input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.7rem;
+    font: inherit;
+    border: 1px solid #8a93a8;
+    border-radius: 0.3rem;
+}
+
+.form-field input:focus,
+button:focus-visible {
+    outline: 3px solid #f2b705;
+    outline-offset: 2px;
+}
+
+button {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.7rem 1.25rem;
+    color: #ffffff;
+    background: #1a3f9c;
+    border: 2px solid #1a3f9c;
+    border-radius: 0.4rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #12296b;
+}
+
+.form-message {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    color: #7a1b15;
+    background: #fdecea;
+    border-left: 4px solid #b3261e;
+    border-radius: 0.3rem;
+}
+
+.login-footer {
+    padding: 1rem;
+    color: #ffffff;
+    background: #12296b;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.login-footer p {
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1.25rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

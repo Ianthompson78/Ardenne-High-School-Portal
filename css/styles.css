@@ -1,0 +1,317 @@
+/* CIT2011 Web Programming Group Assignment — School Portal
+ * School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+ * File: css/ardenne-auth.css
+ * Group members (Name | ID# | Lab day/time | Role):
+ *   1. Jade Gordon | [2501967] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+ *   2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+ *   3. Kemesha Waugh | [2508102| Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+ *   4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+ *   5. Shemar [SURNAME] | [230079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+ */
+body{
+  padding: 0px;
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #f1edc5;
+  background-color: rgb(1, 12, 46);
+  text-align: left;
+  margin: 0;
+}
+.image-container {
+  background-image: url("https://uploads.onecompiler.io/459vt9j8z/459w2khf3/image_2026-11-21_202711612.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button{
+  font-size: medium;
+  color: #073053;
+  font-style: oblique;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+}
+header { 
+ background: #0d0f75;
+ color: rgb(247, 242, 0); 
+ text-align: center;
+ min-height: 100px;
+ font-size: 30px;
+ padding: 20px;
+ border-bottom: 5px solid #F5C928;
+}
+nav {
+    background-color: #eeeff1;
+    padding: 16px;
+    text-align: left;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #F5C928;
+}
+button {
+    background-color: #174C9B;
+    color: white;
+    border: 2px solid #F5C928;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #F5C928;
+    color: #174C9B;
+}
+
+button:disabled {
+    background-color: #999;
+    border-color: #999;
+    color: white;
+    cursor: not-allowed;
+}
+footer{
+  background-color: #0d0f75;
+  font-style: italic;
+  color: rgb(247, 242, 0); 
+  padding: 20px; 
+  text-align: center;
+  height: 70px;
+  font-size: small;
+}
+table{
+  text-align: center;
+  font-size: medium;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+.no-wrap {
+    white-space: nowrap;
+  }
+sub {
+  vertical-align: sub;
+  font-size: 70%;
+}
+
+.main-header{
+  background-color: #174C9B;
+  color: white;
+  padding: 25px 6%;
+}
+.school-brand{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.school-brand h1{
+  margin-bottom: 5px;
+}
+
+.school-brand p{
+  color: #F5C928;
+  font-style: italic;
+}
+
+.main-nav{
+  background-color: #123B78;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px;
+  border-top: 4px solid #F5C928;
+}
+
+.main-nav a{
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.main-nav a:hover{
+  background-color: #F5C928;
+  color: #123B78;
+}
+
+.welcome-section{
+  background: linear-gradient(
+  rgba(23, 76, 155, 0.85),
+  rgba(18, 59, 120, 0.9)
+  );
+ color: white;
+  padding: 85px 8%;
+  text-align: center;
+}
+
+.welcome-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.welcome-label {
+    color: #F5C928;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.welcome-section h2 {
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.welcome-section p {
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.main-button {
+    display: inline-block;
+    background-color: #F5C928;
+    color: #123B78;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background-color: white;
+    color: #174C9B;
+}
+
+.school-intro,
+.portal-section {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.school-intro h2,
+.portal-section h2 {
+    color: #174C9B;
+    margin-bottom: 20px;
+}
+
+.school-intro p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.portal-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.portal-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    border-top: 5px solid #F5C928;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.portal-card h3 {
+    color: #174C9B;
+    margin-bottom: 15px;
+}
+
+.portal-card p {
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+.contact-section {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    color: #F5C928;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    color: white;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contact-table th {
+    background-color: #174C9B;
+    color: white;
+    padding: 18px;
+}
+
+.contact-table td {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.contact-table a {
+    color: #174C9B;
+    text-decoration: none;
+}
+
+.contact-table a:hover {
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .school-brand {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-section {
+        padding: 55px 20px;
+    }
+
+    .welcome-section h2 {
+        font-size: 28px;
+    }
+
+    .portal-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

@@ -1,0 +1,126 @@
+<!--
+CIT2011 Web Programming Group Assignment — School Portal
+
+School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+
+Group members (Name | ID# | Lab day/time | Role):
+
+1. Jade Gordon | [2307670] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+3. Kemesha Waugh | [2508102] | Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+5. Shemar [Williams] | [2300079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | Ardenne High School</title>
+
+    <link rel="stylesheet" href="../css/teacher.css">
+    <script src="../js/ardenne-storage.js"></script>
+<script src="../js/ardenne-auth.js"></script>
+<script>
+    const currentUser = requireRole(["teacher",]);
+</script>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Ardenne High School</h1>
+        <p>Teacher Portal</p>
+    </header>
+
+    <nav>
+        
+        <a href="teacher-dashboard.html">Dashboard</a>
+        <a href="grade-entry.html">Enter Grades</a>
+        <a href="report-card.html">Report Cards</a>
+
+        <a href="../index.html">Back to Home</a>
+<button type="button" onclick="logoutUser()">Logout</button>
+        
+
+
+    </nav>
+
+    <main>
+
+        <h2>Welcome, Teacher</h2>
+        <p>Manage your subjects, students and academic records.</p>
+
+        <section class="subject-selction">
+
+            <h2>My Techeching classes</h2>
+
+            <p>Select a subject and class to view your students.</p>
+
+            <label for="subjectSelect">Choose Subject</label>
+
+            <select id="subjectSelect">
+                <option value="">Select a Subject</option>
+            </select>
+
+            <label for="classSelect">Choose Class</label>
+
+            <select id="classSelect" disabled>
+                <option value="">Select a Class</option>
+            </select>
+
+            <section class="student-section">
+                <h2> student List</h2>
+
+                <div id="studentList">
+                    <p>Select a subject and close  to view students.</p>
+                </div>
+            </section>
+
+            <button id="viewStudentsBtn" disabled>
+                View Students</button>
+            
+        </section>
+
+        <section class="dashboard-container">
+
+            <div class="dashboard-card">
+                <h3>My Subjects</h3>
+                <p>View your assigned subjects.</p>
+                <button onclick="alert('Subject management coming soon!')">
+                    View Subjects
+                </button>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Grade Entry</h3>
+                <p>Enter and manage student grades.</p>
+                <a href="grade-entry.html">
+                    <button>Enter Grades</button>
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Report Cards</h3>
+                <p>Generate student academic reports.</p>
+                <a href="report-card.html">
+                    <button>View Reports</button>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ardenne High School</p>
+    </footer>
+
+    <script src="../js/teacher.js"></script>
+
+</body>
+</html>

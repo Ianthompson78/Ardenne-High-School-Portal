@@ -1,0 +1,88 @@
+
+<!--
+CIT2011 Web Programming Group Assignment — School Portal
+
+School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+
+Group members (Name | ID# | Lab day/time | Role):
+
+1. Jade Gordon | [2307670] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+3. Kemesha Waugh | [2508102] | Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+5. Shemar [Williams] | [2300079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+--><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Report Cards | Ardenne High School</title>
+
+    <link rel="stylesheet" href="../css/teacher.css">
+    <script src="../js/ardenne-storage.js"></script>
+<script src="../js/ardenne-auth.js"></script>
+
+<script>
+    const currentUser = requireRole(["teacher"]);
+</script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Ardenne High School</h1>
+        <p>Student Report Card Portal</p>
+    </header>
+
+    <nav>
+    <a href="teacher-dashboard.html">Dashboard</a>
+    <a href="grade-entry.html">Enter Grades</a>
+    <a href="report-card.html">Report Cards</a>
+</nav>
+
+<main>
+
+    <h2>Student Report Card</h2>
+
+    <p>Generate academic reports for students.</p>
+
+    <section class="grade-section">
+
+        <label for="studentSelect">
+            Select Student:
+        </label>
+
+        <select id="studentSelect">
+            <option value="">Select a Student</option>
+        </select>
+
+        <button id="generateReportBtn">
+            Generate Report
+        </button>
+
+    </section>
+
+        <section class="report-section">
+
+        <div id="reportDisplay">
+
+            <p>Select a student to generate a report card.</p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Ardenne High School</p>
+</footer>
+
+<script src="../js/report-card.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--
+CIT2011 Web Programming Group Assignment — School Portal
+
+School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+
+Group members (Name | ID# | Lab day/time | Role):
+
+1. Jade Gordon | [2307670] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+3. Kemesha Waugh | [2508102] | Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+5. Shemar [Williams] | [2300079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ardenne High School portal login">
+    <title>Portal Login | Ardenne High School</title>
+    <link rel="stylesheet" href="css/ardenne-auth.css">
+</head>
+<body>
+    <header class="login-header">
+        <p>Ardenne High School</p>
+    </header>
+
+    <main>
+        <section class="login-card" aria-labelledby="login-title">
+            <h1 id="login-title">Portal Login</h1>
+            <p class="intro">Sign in with your assigned school portal account.</p>
+
+            <p class="form-message" id="login-message" role="alert"
+               aria-live="polite" hidden></p>
+
+            <form id="login-form">
+                <div class="form-field">
+                    <label for="username-input">Username</label>
+                    <input type="text" id="username-input" name="username"
+                           maxlength="20" autocomplete="username" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="password-input">Password</label>
+                    <input type="password" id="password-input" name="password"
+                           maxlength="50" autocomplete="current-password" required>
+                </div>
+
+                <button type="submit">Log in</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="login-footer">
+        <p>&copy; 2026 Ardenne High School</p>
+    </footer>
+
+    <!-- Load storage first, authentication second, and the form controller last. -->
+    <script src="js/ardenne-storage.js"></script>
+    <script src="js/ardenne-auth.js"></script>
+    <script src="js/ardenne-login.js"></script>
+</body>
+</html>

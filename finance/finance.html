@@ -1,0 +1,539 @@
+<!--
+CIT2011 Web Programming Group Assignment — School Portal
+
+School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+
+Group members (Name | ID# | Lab day/time | Role):
+
+1. Jade Gordon | [2307670] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+3. Kemesha Waugh | [2508102] | Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+5. Shemar [Williams] | [2300079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ardenne High School | Financial Portal</title>
+
+    <!-- Administrator Login Protection -->
+    <script src="../js/ardenne-storage.js"></script>
+    <script src="../js/ardenne-auth.js"></script>
+
+    <script>
+        const currentUser = requireRole(["admin"]);
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background: #f4f7fb;
+            color: #1e293b;
+        }
+
+        header {
+            background: #123b63;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .search-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+
+        input {
+            flex: 1;
+            border: 1px solid #cbd5e1;
+        }
+
+        button {
+            border: none;
+            background: #123b63;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e5285;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px #00000010;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .card p {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #eaf1f8;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .secondary {
+            background: #64748b;
+        }
+
+        #message {
+            color: #b91c1c;
+        }
+
+        @media (max-width: 600px) {
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .search-area {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+            header, .search-area, .actions {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            main {
+                margin: 0;
+                max-width: none;
+            }
+
+            .section, .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Ardenne High School</h1>
+        <p>Student Financial Management Portal</p>
+
+        <!-- Logout Button -->
+        <button type="button" onclick="logoutUser()">
+            Logout
+        </button>
+    </header>
+
+    <main>
+
+        <h2>Student Financial Overview</h2>
+
+        <div class="search-area">
+            <input
+                type="text"
+                id="studentSearch"
+                placeholder="Enter student ID"
+            >
+
+            <button onclick="searchStudent()">Search</button>
+
+            <button class="secondary" onclick="resetSearch()">
+                Reset
+            </button>
+        </div>
+
+
+<div class="search-area">
+    <input type="number" id="schoolFeeInput"
+           placeholder="Enter school fee" min="0">
+
+    <button onclick="setSchoolFee()">Set Fee</button>
+</div>
+
+
+<div class="search-area">
+    <input type="number" id="paymentAmount"
+           placeholder="Enter payment amount" min="1">
+
+    <button onclick="addPayment()">Record Payment</button>
+</div>
+
+        <p id="message"></p>
+
+        <div class="summary">
+
+            <div class="card">
+                <h3>Student Name</h3>
+                <p id="studentName">-</p>
+            </div>
+
+            <div class="card">
+                <h3>School Fee Total</h3>
+                <p id="totalSchoolFee">$0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Outstanding Balance</h3>
+                <p id="balance">$0.00</p>
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>Student Financial Statement</h2>
+
+            <p>
+                <strong>Student ID:</strong>
+                <span id="studentID">-</span>
+            </p>
+
+            <p>
+                <strong>Academic Year:</strong>
+                <span id="academicYear">-</span>
+            </p>
+
+            <p>
+                <strong>Total Payment:</strong>
+                <span id="totalPayments">$0.00</span>
+            </p>
+
+            <h3>Transaction History</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount (JMD)</th>
+                    </tr>
+                </thead>
+
+                <tbody id="transactionTable">
+                </tbody>
+            </table>
+
+            <div class="actions">
+                <button onclick="printStatement()">
+                    Print Financial Statement
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+// Get registered students from Member 3
+let students = getRecords(STORAGE_KEYS.students);
+
+// Get financial records from shared storage
+let financialRecords = getRecords(STORAGE_KEYS.ledger);
+
+let selectedStudent = null;
+
+
+// Find or create a financial record for a student
+function getFinancialRecord(student) {
+
+    let record = financialRecords.find(function(item) {
+        return item.studentId === student.studentId;
+    });
+
+    if (!record) {
+        record = {
+            studentId: student.studentId,
+            academicYear: "2026/2027",
+            schoolFee: 0,
+            payments: []
+        };
+
+        financialRecords.push(record);
+
+        saveRecords(STORAGE_KEYS.ledger, financialRecords);
+    }
+
+    return record;
+}
+
+
+// Format Jamaican currency
+function formatCurrency(amount) {
+    return amount.toLocaleString("en-JM", {
+        style: "currency",
+        currency: "JMD"
+    });
+}
+
+
+// Calculate outstanding balance
+function calculateBalance(record) {
+
+    let totalPayments = 0;
+
+    record.payments.forEach(function(payment) {
+        totalPayments += payment.amount;
+    });
+
+    return record.schoolFee - totalPayments;
+}
+
+
+// Search for a registered student
+function searchStudent() {
+
+    // Refresh the registered student list
+    students = getRecords(STORAGE_KEYS.students);
+
+    const searchValue = document.getElementById("studentSearch")
+        .value.trim().toLowerCase();
+
+    const student = students.find(function(item) {
+
+        const fullName = item.firstName + " " + item.lastName;
+
+        return item.studentId.toLowerCase() === searchValue ||
+               fullName.toLowerCase() === searchValue;
+    });
+
+    if (!student) {
+        document.getElementById("message").textContent =
+            "Student not found. Check the ID or name.";
+
+        selectedStudent = null;
+        return;
+    }
+
+    selectedStudent = student;
+
+    displayStudent(student);
+
+    document.getElementById("message").textContent = "";
+}
+
+
+// Display student's financial information
+function displayStudent(student) {
+
+    const record = getFinancialRecord(student);
+
+    document.getElementById("studentName").textContent =
+        student.firstName + " " + student.lastName;
+
+    document.getElementById("studentID").textContent =
+        student.studentId;
+
+    document.getElementById("academicYear").textContent =
+        record.academicYear;
+
+    document.getElementById("totalSchoolFee").textContent =
+        formatCurrency(record.schoolFee);
+
+    let totalPayments = 0;
+
+    record.payments.forEach(function(payment) {
+        totalPayments += payment.amount;
+    });
+
+    document.getElementById("totalPayments").textContent =
+        formatCurrency(totalPayments);
+
+    document.getElementById("balance").textContent =
+        formatCurrency(calculateBalance(record));
+
+
+    const table = document.getElementById("transactionTable");
+
+    table.innerHTML = "";
+
+    record.payments.forEach(function(payment) {
+
+        const row = document.createElement("tr");
+
+        const dateCell = document.createElement("td");
+        const descriptionCell = document.createElement("td");
+        const amountCell = document.createElement("td");
+
+        dateCell.textContent = payment.date;
+        descriptionCell.textContent = payment.description;
+        amountCell.textContent = formatCurrency(payment.amount);
+
+        row.appendChild(dateCell);
+        row.appendChild(descriptionCell);
+        row.appendChild(amountCell);
+
+        table.appendChild(row);
+    });
+}
+
+
+
+function setSchoolFee() {
+
+    if (!selectedStudent) {
+        alert("Search for a student first.");
+        return;
+    }
+
+    const fee = Number(document.getElementById("schoolFeeInput").value);
+
+    if (!Number.isFinite(fee) || fee <= 0) {
+        alert("Enter a valid school fee.");
+        return;
+    }
+
+    const record = getFinancialRecord(selectedStudent);
+
+    record.schoolFee = fee;
+
+    saveRecords(STORAGE_KEYS.ledger, financialRecords);
+
+    displayStudent(selectedStudent);
+
+    document.getElementById("schoolFeeInput").value = "";
+}
+
+
+
+function addPayment() {
+
+    if (!selectedStudent) {
+        alert("Search for a student first.");
+        return;
+    }
+
+    const amount = Number(document.getElementById("paymentAmount").value);
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+        alert("Enter a valid payment amount.");
+        return;
+    }
+
+    const record = getFinancialRecord(selectedStudent);
+
+    if (record.schoolFee <= 0) {
+        alert("Set the school fee before recording a payment.");
+        return;
+    }
+
+    if (amount > calculateBalance(record)) {
+        alert("Payment cannot exceed the outstanding balance.");
+        return;
+    }
+
+    record.payments.push({
+        date: new Date().toISOString().slice(0, 10),
+        description: "School fee payment",
+        amount: amount
+    });
+
+    saveRecords(STORAGE_KEYS.ledger, financialRecords);
+
+    displayStudent(selectedStudent);
+
+    document.getElementById("paymentAmount").value = "";
+}
+
+
+function resetSearch() {
+
+    selectedStudent = null;
+
+    document.getElementById("studentSearch").value = "";
+    document.getElementById("studentName").textContent = "-";
+    document.getElementById("studentID").textContent = "-";
+    document.getElementById("academicYear").textContent = "-";
+
+    document.getElementById("totalSchoolFee").textContent =
+        formatCurrency(0);
+
+    document.getElementById("totalPayments").textContent =
+        formatCurrency(0);
+
+    document.getElementById("balance").textContent =
+        formatCurrency(0);
+
+    document.getElementById("transactionTable").innerHTML = "";
+    document.getElementById("message").textContent = "";
+
+    document.getElementById("schoolFeeInput").value = "";
+    document.getElementById("paymentAmount").value = "";
+}
+
+
+
+function printStatement() {
+    window.print();
+}
+
+    </script>
+
+</body>
+</html>

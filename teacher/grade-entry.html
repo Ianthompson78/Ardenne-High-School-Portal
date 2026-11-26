@@ -1,0 +1,114 @@
+<!--
+CIT2011 Web Programming Group Assignment — School Portal
+
+School: Ardenne High School, 10 Ardenne Road, Kingston 10, Jamaica
+
+Group members (Name | ID# | Lab day/time | Role):
+
+1. Jade Gordon | [2307670] | Friday 12:00-1:50 | Role 1 - UI/UX & Core Master Layout Architect
+2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
+3. Kemesha Waugh | [2508102] | Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
+4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
+5. Shemar [Williams] | [2300079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade Entry | Ardenne High School</title>
+
+    <link rel="stylesheet" href="../css/teacher.css">
+    <script src="../js/ardenne-storage.js"></script>
+<script src="../js/ardenne-auth.js"></script>
+
+<script>
+    const currentUser = requireRole(["teacher"]);
+</script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Ardenne High School</h1>
+        <p>Teacher Grade Entry Portal</p>
+    </header>
+
+        <nav>
+        <a href="teacher-dashboard.html">Dashboard</a>
+        <a href="grade-entry.html">Enter Grades</a>
+        <a href="report-card.html">Report Cards</a>
+    </nav>
+
+        <main>
+
+        <h2>Student Grade Entry</h2>
+
+        <p>
+            Enter and manage student assessment scores.
+        </p>
+
+        <section class="grade-section">
+
+    <h3>Assessment Records</h3>
+
+    <p>Enter the assessment scores for each student.</p>
+
+    <label for="gradeSubject">Subject:</label>
+
+    <select id="gradeSubject">
+        <option value="">Select Subject</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="English Language">English Language</option>
+        <option value="Physics">Physics</option>
+    </select>
+
+    <label for="gradeClass">Class:</label>
+
+    <select id="gradeClass" disabled>
+    <option value="">Select Class</option>
+    </select>
+
+    <label for="assessmentType">Assessment:</label>
+
+    <select id="assessmentType">
+        <option value="">Select Assessment</option>
+        <option value="Test">Test</option>
+        <option value="Assignment">Assignment</option>
+        <option value="Examination">Examination</option>
+    </select>
+
+    <table id="gradeTable">
+
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Score ( /100 )</th>
+                 <th>Grade</th>
+            </tr>
+        </thead>
+
+        <tbody id="gradeTableBody">
+
+        </tbody>
+
+    </table>
+
+    <button id="calculateGradesBtn">
+        Calculate Grades
+    </button>
+
+</section>
+
+<script src="../js/grade-entry.js"></script>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ardenne High School</p>
+    </footer>
+
+</body>
+</html>
