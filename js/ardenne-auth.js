@@ -38,6 +38,16 @@ const ROLE_SETTINGS = {
     }
 };
 
+function findUser(username) {
+    const cleanUsername = String(username || "").trim().toLowerCase();
+    const users = getRecords(STORAGE_KEYS.users);
+
+    return users.find(function (user) {
+        return user && user.username &&
+            user.username.toLowerCase() === cleanUsername;
+    }) || null;
+}
+
 /* Return account details without exposing its password to dashboard scripts. */
 function makePublicUser(user) {
     return {
