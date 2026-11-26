@@ -19,22 +19,24 @@
  * Roles: "admin", "teacher", "viewer". A logout button should call logoutUser().
  * The dashboard filenames below must match the pages the group creates.
  */
+const BASE_PATH = "/Ardenne-High-School-Portal";
+
 const TOKEN_KEY = "ardenneToken";
 const REASON_KEY = "ardenneLoginReason";
-const LOGIN_PAGE = "/login.html";
+const LOGIN_PAGE = BASE_PATH + "/login.html";
 
 const ROLE_SETTINGS = {
     admin: {
         label: "Administrator",
-        dashboardPage: "/admin/Student-registration.html"
+        dashboardPage: BASE_PATH + "/admin/Student-registration.html"
     },
     teacher: {
         label: "Teacher",
-        dashboardPage: "/teacher/teacher-dashboard.html"
+        dashboardPage: BASE_PATH + "/teacher/teacher-dashboard.html"
     },
     viewer: {
         label: "Read-Only Viewer",
-        dashboardPage: "/viewer-dashboard.html"
+        dashboardPage: BASE_PATH + "/viewer-dashboard.html"
     }
 };
 
