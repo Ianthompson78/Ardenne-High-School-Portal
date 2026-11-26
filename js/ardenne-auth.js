@@ -6,7 +6,7 @@
  *   2. Duanté Chong | 2501967 | Friday 12:00-1:50 | Role 2 - Authentication & State Database Manager
  *   3. Kemesha Waugh | [2508102| Friday 12:00-1:50 | Role 3 - Administrative Interface Developer
  *   4. Ian Thompson | [2501205] | Friday 12:00-1:50 | Role 4 - Instructor Workflow Specialist
- *   5. Shemar [SURNAME] | [230079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
+ *   5. Shemar Williams | [230079] | Friday 12:00-1:50 | Role 5 - Financial Accounting & Reporting Engineer
  */
 
 /*
@@ -21,32 +21,24 @@
  */
 const TOKEN_KEY = "ardenneToken";
 const REASON_KEY = "ardenneLoginReason";
-const LOGIN_PAGE = "/login.html";
+const BASE_PATH = "/Ardenne-High-School-Portal";
+
+const LOGIN_PAGE = BASE_PATH + "/login.html";
 
 const ROLE_SETTINGS = {
     admin: {
         label: "Administrator",
-        dashboardPage: "/admin/Student-registration.html"
+        dashboardPage: BASE_PATH + "/admin/Student-registration.html"
     },
     teacher: {
         label: "Teacher",
-        dashboardPage: "/teacher/teacher-dashboard.html"
+        dashboardPage: BASE_PATH + "/teacher/teacher-dashboard.html"
     },
     viewer: {
         label: "Read-Only Viewer",
-        dashboardPage: "/viewer-dashboard.html"
+        dashboardPage: BASE_PATH + "/viewer-dashboard.html"
     }
 };
-/* Find an account without treating username letter case as significant. */
-function findUser(username) {
-    const cleanUsername = String(username || "").trim().toLowerCase();
-    const users = getRecords(STORAGE_KEYS.users);
-
-    return users.find(function (user) {
-        return user && user.username &&
-            user.username.toLowerCase() === cleanUsername;
-    }) || null;
-}
 
 /* Return account details without exposing its password to dashboard scripts. */
 function makePublicUser(user) {
