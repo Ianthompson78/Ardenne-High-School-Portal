@@ -21,7 +21,7 @@
  */
 const TOKEN_KEY = "ardenneToken";
 const REASON_KEY = "ardenneLoginReason";
-onst LOGIN_PAGE = "/login.html";
+const LOGIN_PAGE = "/login.html";
 
 const ROLE_SETTINGS = {
     admin: {
